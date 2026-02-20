@@ -1,0 +1,1 @@
+# Practical-Work-Out-of-Distribution-Detection-OOD-Scoring-Methods-and-Neural-Collapse
