@@ -1,0 +1,386 @@
+Sun Feb 15 19:22:51 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA L40S                    Off |   00000000:64:00.0 Off |                    0 |
+| N/A   39C    P8             35W /  350W |       1MiB /  46068MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Files already downloaded and verified
+Files already downloaded and verified
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/cifar100_splits.pt
+device: cuda
+num_workers: 7 | pin_memory: True | amp: True
+data_dir: /home/ensta/ensta-nicolas.lopez/data
+out_dir: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881
+epoch 001/300 | train loss 4.0756 acc 0.0972 | val loss 3.8109 acc 0.1410 | lr 0.020027
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 002/300 | train loss 3.5271 acc 0.2065 | val loss 3.4536 acc 0.2268 | lr 0.020107
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 003/300 | train loss 3.1841 acc 0.2859 | val loss 3.1927 acc 0.2856 | lr 0.020240
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 004/300 | train loss 2.8901 acc 0.3591 | val loss 3.0544 acc 0.3234 | lr 0.020427
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 005/300 | train loss 2.6856 acc 0.4135 | val loss 2.8065 acc 0.3822 | lr 0.020667
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 006/300 | train loss 2.5034 acc 0.4656 | val loss 2.6150 acc 0.4376 | lr 0.020959
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 007/300 | train loss 2.3489 acc 0.5099 | val loss 2.5526 acc 0.4560 | lr 0.021305
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 008/300 | train loss 2.2246 acc 0.5509 | val loss 2.4655 acc 0.4734 | lr 0.021703
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 009/300 | train loss 2.1186 acc 0.5818 | val loss 2.4377 acc 0.4898 | lr 0.022154
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 010/300 | train loss 2.0376 acc 0.6089 | val loss 2.3662 acc 0.5116 | lr 0.022656
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 011/300 | train loss 1.9567 acc 0.6343 | val loss 2.4007 acc 0.5028 | lr 0.023211
+epoch 012/300 | train loss 1.8784 acc 0.6583 | val loss 2.2855 acc 0.5358 | lr 0.023817
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 013/300 | train loss 1.8225 acc 0.6751 | val loss 2.2744 acc 0.5328 | lr 0.024474
+epoch 014/300 | train loss 1.7645 acc 0.6957 | val loss 2.2732 acc 0.5400 | lr 0.025181
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 015/300 | train loss 1.7136 acc 0.7145 | val loss 2.2334 acc 0.5526 | lr 0.025940
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 016/300 | train loss 1.6668 acc 0.7284 | val loss 2.1313 acc 0.5804 | lr 0.026748
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 017/300 | train loss 1.6145 acc 0.7459 | val loss 2.1585 acc 0.5800 | lr 0.027605
+epoch 018/300 | train loss 1.5740 acc 0.7572 | val loss 2.1220 acc 0.5866 | lr 0.028511
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 019/300 | train loss 1.5340 acc 0.7736 | val loss 2.2051 acc 0.5650 | lr 0.029466
+epoch 020/300 | train loss 1.4970 acc 0.7873 | val loss 2.0768 acc 0.6046 | lr 0.030468
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 021/300 | train loss 1.4662 acc 0.7975 | val loss 2.0916 acc 0.6002 | lr 0.031518
+epoch 022/300 | train loss 1.4401 acc 0.8078 | val loss 2.1160 acc 0.5984 | lr 0.032614
+epoch 023/300 | train loss 1.4038 acc 0.8186 | val loss 2.0992 acc 0.6064 | lr 0.033756
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 024/300 | train loss 1.3696 acc 0.8309 | val loss 2.0707 acc 0.6104 | lr 0.034943
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 025/300 | train loss 1.3390 acc 0.8433 | val loss 2.0669 acc 0.6054 | lr 0.036174
+epoch 026/300 | train loss 1.3154 acc 0.8528 | val loss 2.0733 acc 0.6144 | lr 0.037450
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 027/300 | train loss 1.2942 acc 0.8595 | val loss 2.0816 acc 0.6120 | lr 0.038769
+epoch 028/300 | train loss 1.2626 acc 0.8707 | val loss 2.0697 acc 0.6096 | lr 0.040129
+epoch 029/300 | train loss 1.2412 acc 0.8791 | val loss 2.0351 acc 0.6224 | lr 0.041532
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 030/300 | train loss 1.2168 acc 0.8906 | val loss 1.9850 acc 0.6378 | lr 0.042974
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 031/300 | train loss 1.2004 acc 0.8922 | val loss 2.0145 acc 0.6380 | lr 0.044457
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 032/300 | train loss 1.1857 acc 0.8978 | val loss 2.0780 acc 0.6124 | lr 0.045979
+epoch 033/300 | train loss 1.1744 acc 0.9029 | val loss 2.0511 acc 0.6300 | lr 0.047538
+epoch 034/300 | train loss 1.1594 acc 0.9072 | val loss 2.0855 acc 0.6156 | lr 0.049134
+epoch 035/300 | train loss 1.1544 acc 0.9080 | val loss 2.0017 acc 0.6416 | lr 0.050767
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 036/300 | train loss 1.1355 acc 0.9149 | val loss 2.0816 acc 0.6236 | lr 0.052435
+epoch 037/300 | train loss 1.1190 acc 0.9214 | val loss 1.9663 acc 0.6442 | lr 0.054137
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 038/300 | train loss 1.1135 acc 0.9233 | val loss 2.0314 acc 0.6250 | lr 0.055872
+epoch 039/300 | train loss 1.1082 acc 0.9238 | val loss 2.0225 acc 0.6334 | lr 0.057639
+epoch 040/300 | train loss 1.1009 acc 0.9260 | val loss 1.9841 acc 0.6436 | lr 0.059437
+epoch 041/300 | train loss 1.1064 acc 0.9238 | val loss 2.0303 acc 0.6348 | lr 0.061265
+epoch 042/300 | train loss 1.0975 acc 0.9252 | val loss 2.0124 acc 0.6406 | lr 0.063122
+epoch 043/300 | train loss 1.0897 acc 0.9277 | val loss 2.0242 acc 0.6288 | lr 0.065007
+epoch 044/300 | train loss 1.0848 acc 0.9295 | val loss 2.0107 acc 0.6414 | lr 0.066919
+epoch 045/300 | train loss 1.0883 acc 0.9281 | val loss 2.0969 acc 0.6196 | lr 0.068856
+epoch 046/300 | train loss 1.0869 acc 0.9278 | val loss 2.0606 acc 0.6276 | lr 0.070818
+epoch 047/300 | train loss 1.0869 acc 0.9281 | val loss 2.0981 acc 0.6148 | lr 0.072802
+epoch 048/300 | train loss 1.0859 acc 0.9274 | val loss 2.1340 acc 0.6008 | lr 0.074809
+epoch 049/300 | train loss 1.0889 acc 0.9266 | val loss 2.0866 acc 0.6120 | lr 0.076837
+epoch 050/300 | train loss 1.0880 acc 0.9273 | val loss 2.1176 acc 0.6128 | lr 0.078884
+epoch 051/300 | train loss 1.0986 acc 0.9223 | val loss 2.1642 acc 0.5976 | lr 0.080950
+epoch 052/300 | train loss 1.0927 acc 0.9243 | val loss 2.0614 acc 0.6266 | lr 0.083033
+epoch 053/300 | train loss 1.0787 acc 0.9296 | val loss 2.0430 acc 0.6266 | lr 0.085132
+epoch 054/300 | train loss 1.0898 acc 0.9242 | val loss 2.0984 acc 0.6174 | lr 0.087246
+epoch 055/300 | train loss 1.0835 acc 0.9270 | val loss 2.1074 acc 0.6146 | lr 0.089374
+epoch 056/300 | train loss 1.0800 acc 0.9284 | val loss 2.1476 acc 0.5950 | lr 0.091513
+epoch 057/300 | train loss 1.0931 acc 0.9236 | val loss 2.3070 acc 0.5594 | lr 0.093664
+epoch 058/300 | train loss 1.0907 acc 0.9238 | val loss 2.1613 acc 0.5930 | lr 0.095824
+epoch 059/300 | train loss 1.0890 acc 0.9238 | val loss 2.1089 acc 0.6152 | lr 0.097992
+epoch 060/300 | train loss 1.0828 acc 0.9275 | val loss 2.1054 acc 0.6124 | lr 0.100168
+epoch 061/300 | train loss 1.0819 acc 0.9277 | val loss 2.1268 acc 0.6024 | lr 0.102350
+epoch 062/300 | train loss 1.0784 acc 0.9273 | val loss 2.1403 acc 0.5988 | lr 0.104536
+epoch 063/300 | train loss 1.0780 acc 0.9281 | val loss 2.0604 acc 0.6244 | lr 0.106725
+epoch 064/300 | train loss 1.0854 acc 0.9241 | val loss 2.1454 acc 0.6054 | lr 0.108917
+epoch 065/300 | train loss 1.0773 acc 0.9300 | val loss 2.2230 acc 0.5816 | lr 0.111109
+epoch 066/300 | train loss 1.0774 acc 0.9263 | val loss 2.1099 acc 0.6068 | lr 0.113300
+epoch 067/300 | train loss 1.0697 acc 0.9314 | val loss 2.2056 acc 0.5908 | lr 0.115489
+epoch 068/300 | train loss 1.0686 acc 0.9328 | val loss 2.1167 acc 0.6134 | lr 0.117675
+epoch 069/300 | train loss 1.0733 acc 0.9290 | val loss 2.0938 acc 0.6168 | lr 0.119857
+epoch 070/300 | train loss 1.0742 acc 0.9288 | val loss 2.1877 acc 0.5948 | lr 0.122032
+epoch 071/300 | train loss 1.0715 acc 0.9307 | val loss 2.2286 acc 0.5842 | lr 0.124201
+epoch 072/300 | train loss 1.0637 acc 0.9317 | val loss 2.1246 acc 0.6202 | lr 0.126361
+epoch 073/300 | train loss 1.0762 acc 0.9279 | val loss 2.3117 acc 0.5614 | lr 0.128512
+epoch 074/300 | train loss 1.0839 acc 0.9247 | val loss 2.2359 acc 0.5724 | lr 0.130651
+epoch 075/300 | train loss 1.0858 acc 0.9220 | val loss 2.2076 acc 0.5972 | lr 0.132778
+epoch 076/300 | train loss 1.0889 acc 0.9224 | val loss 2.2213 acc 0.5876 | lr 0.134892
+epoch 077/300 | train loss 1.0900 acc 0.9202 | val loss 2.1896 acc 0.5980 | lr 0.136991
+epoch 078/300 | train loss 1.0748 acc 0.9279 | val loss 2.2190 acc 0.5908 | lr 0.139074
+epoch 079/300 | train loss 1.0713 acc 0.9281 | val loss 2.1030 acc 0.6148 | lr 0.141139
+epoch 080/300 | train loss 1.0673 acc 0.9283 | val loss 2.0930 acc 0.6182 | lr 0.143186
+epoch 081/300 | train loss 1.0614 acc 0.9319 | val loss 2.1529 acc 0.6092 | lr 0.145214
+epoch 082/300 | train loss 1.0820 acc 0.9242 | val loss 2.1177 acc 0.6158 | lr 0.147221
+epoch 083/300 | train loss 1.0763 acc 0.9259 | val loss 2.1923 acc 0.5950 | lr 0.149205
+epoch 084/300 | train loss 1.0695 acc 0.9279 | val loss 2.1415 acc 0.6104 | lr 0.151166
+epoch 085/300 | train loss 1.0659 acc 0.9294 | val loss 2.2578 acc 0.5752 | lr 0.153103
+epoch 086/300 | train loss 1.0589 acc 0.9314 | val loss 2.1573 acc 0.6086 | lr 0.155015
+epoch 087/300 | train loss 1.0632 acc 0.9302 | val loss 2.2211 acc 0.5856 | lr 0.156899
+epoch 088/300 | train loss 1.0703 acc 0.9286 | val loss 2.2285 acc 0.5884 | lr 0.158756
+epoch 089/300 | train loss 1.0762 acc 0.9250 | val loss 2.1330 acc 0.6020 | lr 0.160584
+epoch 090/300 | train loss 1.0839 acc 0.9222 | val loss 2.2617 acc 0.5754 | lr 0.162382
+epoch 091/300 | train loss 1.0724 acc 0.9275 | val loss 2.2711 acc 0.5712 | lr 0.164148
+epoch 092/300 | train loss 1.0693 acc 0.9282 | val loss 2.2775 acc 0.5710 | lr 0.165883
+epoch 093/300 | train loss 1.0729 acc 0.9254 | val loss 2.1998 acc 0.5932 | lr 0.167585
+epoch 094/300 | train loss 1.0599 acc 0.9308 | val loss 2.2218 acc 0.5872 | lr 0.169252
+epoch 095/300 | train loss 1.0565 acc 0.9319 | val loss 2.2317 acc 0.5800 | lr 0.170884
+epoch 096/300 | train loss 1.0773 acc 0.9250 | val loss 2.1331 acc 0.6042 | lr 0.172480
+epoch 097/300 | train loss 1.0723 acc 0.9271 | val loss 2.1024 acc 0.6140 | lr 0.174039
+epoch 098/300 | train loss 1.0684 acc 0.9266 | val loss 2.1772 acc 0.5974 | lr 0.175560
+epoch 099/300 | train loss 1.0622 acc 0.9307 | val loss 2.0932 acc 0.6140 | lr 0.177042
+epoch 100/300 | train loss 1.0598 acc 0.9297 | val loss 2.2079 acc 0.5928 | lr 0.178485
+epoch 101/300 | train loss 1.0662 acc 0.9271 | val loss 2.1142 acc 0.6162 | lr 0.179887
+epoch 102/300 | train loss 1.0589 acc 0.9313 | val loss 2.2938 acc 0.5666 | lr 0.181247
+epoch 103/300 | train loss 1.0715 acc 0.9252 | val loss 2.1596 acc 0.6056 | lr 0.182565
+epoch 104/300 | train loss 1.0638 acc 0.9288 | val loss 2.2728 acc 0.5750 | lr 0.183840
+epoch 105/300 | train loss 1.0764 acc 0.9236 | val loss 2.1371 acc 0.6088 | lr 0.185071
+epoch 106/300 | train loss 1.0730 acc 0.9258 | val loss 2.1558 acc 0.6028 | lr 0.186258
+epoch 107/300 | train loss 1.0669 acc 0.9289 | val loss 2.1358 acc 0.6070 | lr 0.187399
+epoch 108/300 | train loss 1.0597 acc 0.9283 | val loss 2.0982 acc 0.6220 | lr 0.188495
+epoch 109/300 | train loss 1.0720 acc 0.9244 | val loss 2.2193 acc 0.5920 | lr 0.189544
+epoch 110/300 | train loss 1.0556 acc 0.9320 | val loss 2.1074 acc 0.6154 | lr 0.190546
+epoch 111/300 | train loss 1.0445 acc 0.9362 | val loss 2.1139 acc 0.6178 | lr 0.191500
+epoch 112/300 | train loss 1.0635 acc 0.9292 | val loss 2.1070 acc 0.6122 | lr 0.192405
+epoch 113/300 | train loss 1.0611 acc 0.9298 | val loss 2.2055 acc 0.5994 | lr 0.193262
+epoch 114/300 | train loss 1.0624 acc 0.9288 | val loss 2.2008 acc 0.5978 | lr 0.194069
+epoch 115/300 | train loss 1.0573 acc 0.9298 | val loss 2.2316 acc 0.5892 | lr 0.194827
+epoch 116/300 | train loss 1.0644 acc 0.9272 | val loss 2.1578 acc 0.5994 | lr 0.195534
+epoch 117/300 | train loss 1.0615 acc 0.9278 | val loss 2.2069 acc 0.5874 | lr 0.196191
+epoch 118/300 | train loss 1.0593 acc 0.9309 | val loss 2.3467 acc 0.5576 | lr 0.196796
+epoch 119/300 | train loss 1.0698 acc 0.9254 | val loss 2.3279 acc 0.5604 | lr 0.197350
+epoch 120/300 | train loss 1.0567 acc 0.9304 | val loss 2.1170 acc 0.6200 | lr 0.197852
+epoch 121/300 | train loss 1.0616 acc 0.9294 | val loss 2.1466 acc 0.6036 | lr 0.198302
+epoch 122/300 | train loss 1.0529 acc 0.9318 | val loss 2.2452 acc 0.5914 | lr 0.198699
+epoch 123/300 | train loss 1.0504 acc 0.9310 | val loss 2.1502 acc 0.6082 | lr 0.199044
+epoch 124/300 | train loss 1.0498 acc 0.9328 | val loss 2.1761 acc 0.5962 | lr 0.199337
+epoch 125/300 | train loss 1.0574 acc 0.9293 | val loss 2.3467 acc 0.5584 | lr 0.199576
+epoch 126/300 | train loss 1.0710 acc 0.9245 | val loss 2.2136 acc 0.5896 | lr 0.199762
+epoch 127/300 | train loss 1.0625 acc 0.9269 | val loss 2.1258 acc 0.6174 | lr 0.199894
+epoch 128/300 | train loss 1.0551 acc 0.9301 | val loss 2.1961 acc 0.5962 | lr 0.199974
+epoch 129/300 | train loss 1.0600 acc 0.9287 | val loss 2.1848 acc 0.5936 | lr 0.200000
+epoch 130/300 | train loss 1.0548 acc 0.9304 | val loss 2.1959 acc 0.5924 | lr 0.199973
+epoch 131/300 | train loss 1.0600 acc 0.9280 | val loss 2.2212 acc 0.5926 | lr 0.199892
+epoch 132/300 | train loss 1.0449 acc 0.9340 | val loss 2.1347 acc 0.6120 | lr 0.199758
+epoch 133/300 | train loss 1.0299 acc 0.9391 | val loss 2.2921 acc 0.5734 | lr 0.199571
+epoch 134/300 | train loss 1.0471 acc 0.9335 | val loss 2.2741 acc 0.5694 | lr 0.199330
+epoch 135/300 | train loss 1.0465 acc 0.9322 | val loss 2.1883 acc 0.5854 | lr 0.199037
+epoch 136/300 | train loss 1.0483 acc 0.9317 | val loss 2.1999 acc 0.5976 | lr 0.198691
+epoch 137/300 | train loss 1.0515 acc 0.9309 | val loss 2.1784 acc 0.5980 | lr 0.198292
+epoch 138/300 | train loss 1.0594 acc 0.9268 | val loss 2.2321 acc 0.5872 | lr 0.197841
+epoch 139/300 | train loss 1.0598 acc 0.9275 | val loss 2.1293 acc 0.6048 | lr 0.197338
+epoch 140/300 | train loss 1.0578 acc 0.9281 | val loss 2.1768 acc 0.6006 | lr 0.196783
+epoch 141/300 | train loss 1.0511 acc 0.9313 | val loss 2.1611 acc 0.6006 | lr 0.196176
+epoch 142/300 | train loss 1.0418 acc 0.9345 | val loss 2.1456 acc 0.6118 | lr 0.195518
+epoch 143/300 | train loss 1.0376 acc 0.9348 | val loss 2.1977 acc 0.6044 | lr 0.194810
+epoch 144/300 | train loss 1.0461 acc 0.9311 | val loss 2.0880 acc 0.6158 | lr 0.194051
+epoch 145/300 | train loss 1.0446 acc 0.9333 | val loss 2.2869 acc 0.5702 | lr 0.193243
+epoch 146/300 | train loss 1.0457 acc 0.9329 | val loss 2.2337 acc 0.5794 | lr 0.192385
+epoch 147/300 | train loss 1.0344 acc 0.9364 | val loss 2.2730 acc 0.5760 | lr 0.191478
+epoch 148/300 | train loss 1.0338 acc 0.9366 | val loss 2.2063 acc 0.5936 | lr 0.190523
+epoch 149/300 | train loss 1.0428 acc 0.9337 | val loss 2.0879 acc 0.6186 | lr 0.189520
+epoch 150/300 | train loss 1.0383 acc 0.9338 | val loss 2.2933 acc 0.5816 | lr 0.188470
+epoch 151/300 | train loss 1.0419 acc 0.9338 | val loss 2.2020 acc 0.5958 | lr 0.187374
+epoch 152/300 | train loss 1.0312 acc 0.9374 | val loss 2.0911 acc 0.6230 | lr 0.186231
+epoch 153/300 | train loss 1.0269 acc 0.9386 | val loss 2.1592 acc 0.6044 | lr 0.185043
+epoch 154/300 | train loss 1.0365 acc 0.9364 | val loss 2.1880 acc 0.6024 | lr 0.183811
+epoch 155/300 | train loss 1.0297 acc 0.9385 | val loss 2.1881 acc 0.5984 | lr 0.182535
+epoch 156/300 | train loss 1.0361 acc 0.9361 | val loss 2.1776 acc 0.5954 | lr 0.181216
+epoch 157/300 | train loss 1.0410 acc 0.9334 | val loss 2.1878 acc 0.5934 | lr 0.179855
+epoch 158/300 | train loss 1.0385 acc 0.9355 | val loss 2.2114 acc 0.5854 | lr 0.178452
+epoch 159/300 | train loss 1.0223 acc 0.9420 | val loss 2.2112 acc 0.5918 | lr 0.177009
+epoch 160/300 | train loss 1.0363 acc 0.9343 | val loss 2.1439 acc 0.6066 | lr 0.175526
+epoch 161/300 | train loss 1.0344 acc 0.9349 | val loss 2.1283 acc 0.6144 | lr 0.174004
+epoch 162/300 | train loss 1.0303 acc 0.9361 | val loss 2.0973 acc 0.6172 | lr 0.172444
+epoch 163/300 | train loss 1.0246 acc 0.9388 | val loss 2.2604 acc 0.5886 | lr 0.170847
+epoch 164/300 | train loss 1.0171 acc 0.9421 | val loss 2.2848 acc 0.5748 | lr 0.169214
+epoch 165/300 | train loss 1.0241 acc 0.9401 | val loss 2.0683 acc 0.6272 | lr 0.167546
+epoch 166/300 | train loss 1.0166 acc 0.9424 | val loss 2.2433 acc 0.5882 | lr 0.165844
+epoch 167/300 | train loss 1.0150 acc 0.9434 | val loss 2.2551 acc 0.5846 | lr 0.164108
+epoch 168/300 | train loss 1.0026 acc 0.9471 | val loss 2.0739 acc 0.6226 | lr 0.162341
+epoch 169/300 | train loss 1.0263 acc 0.9396 | val loss 2.2033 acc 0.5968 | lr 0.160542
+epoch 170/300 | train loss 1.0300 acc 0.9373 | val loss 2.1144 acc 0.6216 | lr 0.158714
+epoch 171/300 | train loss 1.0187 acc 0.9416 | val loss 2.1183 acc 0.6098 | lr 0.156856
+epoch 172/300 | train loss 1.0273 acc 0.9370 | val loss 2.1618 acc 0.6094 | lr 0.154971
+epoch 173/300 | train loss 1.0179 acc 0.9397 | val loss 2.1486 acc 0.6118 | lr 0.153059
+epoch 174/300 | train loss 1.0122 acc 0.9430 | val loss 2.1007 acc 0.6156 | lr 0.151122
+epoch 175/300 | train loss 1.0096 acc 0.9443 | val loss 2.1516 acc 0.6098 | lr 0.149160
+epoch 176/300 | train loss 1.0047 acc 0.9457 | val loss 2.2065 acc 0.6010 | lr 0.147175
+epoch 177/300 | train loss 1.0081 acc 0.9442 | val loss 2.2463 acc 0.5902 | lr 0.145168
+epoch 178/300 | train loss 1.0043 acc 0.9463 | val loss 2.3242 acc 0.5718 | lr 0.143140
+epoch 179/300 | train loss 0.9960 acc 0.9496 | val loss 2.3001 acc 0.5754 | lr 0.141092
+epoch 180/300 | train loss 0.9934 acc 0.9489 | val loss 2.0787 acc 0.6276 | lr 0.139026
+epoch 181/300 | train loss 0.9948 acc 0.9487 | val loss 2.0410 acc 0.6318 | lr 0.136943
+epoch 182/300 | train loss 1.0051 acc 0.9455 | val loss 2.1033 acc 0.6184 | lr 0.134843
+epoch 183/300 | train loss 1.0050 acc 0.9452 | val loss 2.1814 acc 0.6070 | lr 0.132729
+epoch 184/300 | train loss 1.0012 acc 0.9457 | val loss 2.1711 acc 0.6010 | lr 0.130602
+epoch 185/300 | train loss 0.9919 acc 0.9508 | val loss 2.1315 acc 0.6200 | lr 0.128462
+epoch 186/300 | train loss 0.9866 acc 0.9520 | val loss 2.0695 acc 0.6308 | lr 0.126312
+epoch 187/300 | train loss 0.9840 acc 0.9536 | val loss 2.0990 acc 0.6240 | lr 0.124151
+epoch 188/300 | train loss 0.9888 acc 0.9506 | val loss 2.1353 acc 0.6074 | lr 0.121983
+epoch 189/300 | train loss 0.9854 acc 0.9529 | val loss 2.1414 acc 0.6146 | lr 0.119807
+epoch 190/300 | train loss 0.9818 acc 0.9529 | val loss 2.0686 acc 0.6322 | lr 0.117625
+epoch 191/300 | train loss 0.9855 acc 0.9508 | val loss 2.0847 acc 0.6352 | lr 0.115439
+epoch 192/300 | train loss 0.9723 acc 0.9578 | val loss 2.1711 acc 0.5948 | lr 0.113250
+epoch 193/300 | train loss 0.9717 acc 0.9563 | val loss 2.0397 acc 0.6358 | lr 0.111058
+epoch 194/300 | train loss 0.9617 acc 0.9602 | val loss 2.0573 acc 0.6320 | lr 0.108866
+epoch 195/300 | train loss 0.9736 acc 0.9566 | val loss 2.0755 acc 0.6358 | lr 0.106675
+epoch 196/300 | train loss 0.9753 acc 0.9558 | val loss 2.0935 acc 0.6190 | lr 0.104486
+epoch 197/300 | train loss 0.9787 acc 0.9543 | val loss 2.0639 acc 0.6380 | lr 0.102300
+epoch 198/300 | train loss 0.9731 acc 0.9569 | val loss 2.0836 acc 0.6208 | lr 0.100118
+epoch 199/300 | train loss 0.9578 acc 0.9614 | val loss 2.0815 acc 0.6330 | lr 0.097943
+epoch 200/300 | train loss 0.9506 acc 0.9634 | val loss 2.0681 acc 0.6346 | lr 0.095774
+epoch 201/300 | train loss 0.9443 acc 0.9659 | val loss 2.0333 acc 0.6350 | lr 0.093614
+epoch 202/300 | train loss 0.9464 acc 0.9643 | val loss 2.0574 acc 0.6378 | lr 0.091464
+epoch 203/300 | train loss 0.9576 acc 0.9609 | val loss 2.0045 acc 0.6542 | lr 0.089324
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 204/300 | train loss 0.9487 acc 0.9634 | val loss 2.0931 acc 0.6296 | lr 0.087197
+epoch 205/300 | train loss 0.9498 acc 0.9634 | val loss 2.0078 acc 0.6542 | lr 0.085084
+epoch 206/300 | train loss 0.9484 acc 0.9640 | val loss 2.0180 acc 0.6438 | lr 0.082985
+epoch 207/300 | train loss 0.9492 acc 0.9630 | val loss 2.0639 acc 0.6352 | lr 0.080903
+epoch 208/300 | train loss 0.9419 acc 0.9658 | val loss 1.9961 acc 0.6556 | lr 0.078837
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 209/300 | train loss 0.9246 acc 0.9713 | val loss 1.9837 acc 0.6584 | lr 0.076790
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 210/300 | train loss 0.9218 acc 0.9727 | val loss 1.9412 acc 0.6682 | lr 0.074763
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 211/300 | train loss 0.9160 acc 0.9736 | val loss 1.8986 acc 0.6794 | lr 0.072756
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 212/300 | train loss 0.9117 acc 0.9757 | val loss 2.0463 acc 0.6350 | lr 0.070772
+epoch 213/300 | train loss 0.9255 acc 0.9706 | val loss 1.9844 acc 0.6536 | lr 0.068811
+epoch 214/300 | train loss 0.9212 acc 0.9722 | val loss 2.0327 acc 0.6460 | lr 0.066875
+epoch 215/300 | train loss 0.9238 acc 0.9705 | val loss 2.0400 acc 0.6422 | lr 0.064964
+epoch 216/300 | train loss 0.9190 acc 0.9735 | val loss 2.0303 acc 0.6462 | lr 0.063079
+epoch 217/300 | train loss 0.9116 acc 0.9757 | val loss 1.9583 acc 0.6714 | lr 0.061223
+epoch 218/300 | train loss 0.9029 acc 0.9780 | val loss 1.9486 acc 0.6696 | lr 0.059395
+epoch 219/300 | train loss 0.8971 acc 0.9791 | val loss 1.9071 acc 0.6716 | lr 0.057598
+epoch 220/300 | train loss 0.8955 acc 0.9794 | val loss 1.9591 acc 0.6588 | lr 0.055832
+epoch 221/300 | train loss 0.8908 acc 0.9816 | val loss 1.9388 acc 0.6702 | lr 0.054097
+epoch 222/300 | train loss 0.8852 acc 0.9831 | val loss 1.9345 acc 0.6718 | lr 0.052396
+epoch 223/300 | train loss 0.8820 acc 0.9835 | val loss 1.9202 acc 0.6722 | lr 0.050729
+epoch 224/300 | train loss 0.8742 acc 0.9855 | val loss 1.8918 acc 0.6812 | lr 0.049097
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 225/300 | train loss 0.8707 acc 0.9867 | val loss 1.9260 acc 0.6674 | lr 0.047502
+epoch 226/300 | train loss 0.8633 acc 0.9887 | val loss 1.8909 acc 0.6902 | lr 0.045943
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 227/300 | train loss 0.8584 acc 0.9892 | val loss 1.8535 acc 0.6928 | lr 0.044422
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 228/300 | train loss 0.8549 acc 0.9906 | val loss 1.8851 acc 0.6864 | lr 0.042941
+epoch 229/300 | train loss 0.8571 acc 0.9896 | val loss 1.9485 acc 0.6728 | lr 0.041499
+epoch 230/300 | train loss 0.8577 acc 0.9896 | val loss 1.8672 acc 0.6936 | lr 0.040098
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 231/300 | train loss 0.8543 acc 0.9908 | val loss 1.8407 acc 0.6948 | lr 0.038738
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 232/300 | train loss 0.8540 acc 0.9903 | val loss 1.8573 acc 0.6938 | lr 0.037420
+epoch 233/300 | train loss 0.8503 acc 0.9915 | val loss 1.8441 acc 0.7018 | lr 0.036146
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 234/300 | train loss 0.8445 acc 0.9921 | val loss 1.8321 acc 0.7008 | lr 0.034915
+epoch 235/300 | train loss 0.8420 acc 0.9925 | val loss 1.8535 acc 0.6974 | lr 0.033729
+epoch 236/300 | train loss 0.8377 acc 0.9936 | val loss 1.8504 acc 0.7032 | lr 0.032588
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 237/300 | train loss 0.8306 acc 0.9953 | val loss 1.7920 acc 0.7110 | lr 0.031493
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 238/300 | train loss 0.8262 acc 0.9962 | val loss 1.8345 acc 0.7082 | lr 0.030444
+epoch 239/300 | train loss 0.8242 acc 0.9963 | val loss 1.8069 acc 0.7090 | lr 0.029443
+epoch 240/300 | train loss 0.8184 acc 0.9973 | val loss 1.7767 acc 0.7234 | lr 0.028490
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 241/300 | train loss 0.8145 acc 0.9975 | val loss 1.7640 acc 0.7294 | lr 0.027585
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 242/300 | train loss 0.8130 acc 0.9976 | val loss 1.7706 acc 0.7238 | lr 0.026728
+epoch 243/300 | train loss 0.8091 acc 0.9982 | val loss 1.7434 acc 0.7356 | lr 0.025922
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 244/300 | train loss 0.8034 acc 0.9991 | val loss 1.7314 acc 0.7410 | lr 0.025165
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 245/300 | train loss 0.8016 acc 0.9990 | val loss 1.7492 acc 0.7326 | lr 0.024458
+epoch 246/300 | train loss 0.7994 acc 0.9990 | val loss 1.7482 acc 0.7380 | lr 0.023802
+epoch 247/300 | train loss 0.7979 acc 0.9992 | val loss 1.7365 acc 0.7354 | lr 0.023197
+epoch 248/300 | train loss 0.7960 acc 0.9994 | val loss 1.7290 acc 0.7438 | lr 0.022644
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 249/300 | train loss 0.7938 acc 0.9995 | val loss 1.7177 acc 0.7440 | lr 0.022143
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 250/300 | train loss 0.7930 acc 0.9995 | val loss 1.7374 acc 0.7420 | lr 0.021693
+epoch 251/300 | train loss 0.7924 acc 0.9994 | val loss 1.7255 acc 0.7492 | lr 0.021296
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 252/300 | train loss 0.7921 acc 0.9996 | val loss 1.7152 acc 0.7480 | lr 0.020952
+epoch 253/300 | train loss 0.7917 acc 0.9995 | val loss 1.7322 acc 0.7418 | lr 0.020660
+epoch 254/300 | train loss 0.7924 acc 0.9993 | val loss 1.7192 acc 0.7454 | lr 0.020422
+epoch 255/300 | train loss 0.7924 acc 0.9994 | val loss 1.7494 acc 0.7382 | lr 0.020236
+epoch 256/300 | train loss 0.7927 acc 0.9993 | val loss 1.7330 acc 0.7484 | lr 0.020104
+epoch 257/300 | train loss 0.7925 acc 0.9995 | val loss 1.7284 acc 0.7426 | lr 0.020025
+epoch 258/300 | train loss 0.7922 acc 0.9996 | val loss 1.7440 acc 0.7476 | lr 0.020000
+epoch 259/300 | train loss 0.7931 acc 0.9994 | val loss 1.7290 acc 0.7500 | lr 0.019971
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 260/300 | train loss 0.7953 acc 0.9990 | val loss 1.8352 acc 0.7152 | lr 0.019886
+epoch 261/300 | train loss 0.8031 acc 0.9988 | val loss 1.8262 acc 0.7100 | lr 0.019746
+epoch 262/300 | train loss 0.8172 acc 0.9972 | val loss 1.9505 acc 0.6860 | lr 0.019551
+epoch 263/300 | train loss 0.8972 acc 0.9769 | val loss 2.2242 acc 0.6018 | lr 0.019304
+epoch 264/300 | train loss 1.1538 acc 0.8911 | val loss 2.4889 acc 0.5208 | lr 0.019004
+epoch 265/300 | train loss 1.1958 acc 0.8742 | val loss 2.2296 acc 0.5738 | lr 0.018654
+epoch 266/300 | train loss 1.0621 acc 0.9207 | val loss 2.0937 acc 0.6276 | lr 0.018255
+epoch 267/300 | train loss 0.9733 acc 0.9537 | val loss 1.9287 acc 0.6658 | lr 0.017811
+epoch 268/300 | train loss 0.9018 acc 0.9768 | val loss 1.8367 acc 0.6968 | lr 0.017323
+epoch 269/300 | train loss 0.8630 acc 0.9881 | val loss 1.7916 acc 0.7156 | lr 0.016794
+epoch 270/300 | train loss 0.8381 acc 0.9937 | val loss 1.7827 acc 0.7152 | lr 0.016227
+epoch 271/300 | train loss 0.8218 acc 0.9965 | val loss 1.7552 acc 0.7286 | lr 0.015626
+epoch 272/300 | train loss 0.8101 acc 0.9987 | val loss 1.7278 acc 0.7370 | lr 0.014993
+epoch 273/300 | train loss 0.8035 acc 0.9988 | val loss 1.7353 acc 0.7360 | lr 0.014332
+epoch 274/300 | train loss 0.7993 acc 0.9991 | val loss 1.7110 acc 0.7482 | lr 0.013647
+epoch 275/300 | train loss 0.7961 acc 0.9993 | val loss 1.7088 acc 0.7452 | lr 0.012942
+epoch 276/300 | train loss 0.7943 acc 0.9993 | val loss 1.6972 acc 0.7524 | lr 0.012220
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 277/300 | train loss 0.7923 acc 0.9995 | val loss 1.7013 acc 0.7528 | lr 0.011486
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 278/300 | train loss 0.7909 acc 0.9996 | val loss 1.6981 acc 0.7514 | lr 0.010744
+epoch 279/300 | train loss 0.7898 acc 0.9996 | val loss 1.7069 acc 0.7510 | lr 0.009997
+epoch 280/300 | train loss 0.7888 acc 0.9996 | val loss 1.7001 acc 0.7548 | lr 0.009251
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 281/300 | train loss 0.7887 acc 0.9996 | val loss 1.6894 acc 0.7546 | lr 0.008509
+epoch 282/300 | train loss 0.7879 acc 0.9996 | val loss 1.7029 acc 0.7484 | lr 0.007775
+epoch 283/300 | train loss 0.7877 acc 0.9996 | val loss 1.6937 acc 0.7574 | lr 0.007054
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 284/300 | train loss 0.7873 acc 0.9997 | val loss 1.6934 acc 0.7590 | lr 0.006349
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 285/300 | train loss 0.7868 acc 0.9997 | val loss 1.7013 acc 0.7540 | lr 0.005665
+epoch 286/300 | train loss 0.7867 acc 0.9996 | val loss 1.7025 acc 0.7508 | lr 0.005005
+epoch 287/300 | train loss 0.7864 acc 0.9998 | val loss 1.6957 acc 0.7524 | lr 0.004373
+epoch 288/300 | train loss 0.7862 acc 0.9997 | val loss 1.7089 acc 0.7530 | lr 0.003773
+epoch 289/300 | train loss 0.7862 acc 0.9997 | val loss 1.7011 acc 0.7566 | lr 0.003207
+epoch 290/300 | train loss 0.7859 acc 0.9998 | val loss 1.7029 acc 0.7568 | lr 0.002680
+epoch 291/300 | train loss 0.7859 acc 0.9997 | val loss 1.6947 acc 0.7598 | lr 0.002193
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 292/300 | train loss 0.7856 acc 0.9998 | val loss 1.7091 acc 0.7560 | lr 0.001750
+epoch 293/300 | train loss 0.7856 acc 0.9998 | val loss 1.6914 acc 0.7594 | lr 0.001353
+epoch 294/300 | train loss 0.7854 acc 0.9998 | val loss 1.6926 acc 0.7598 | lr 0.001005
+epoch 295/300 | train loss 0.7855 acc 0.9998 | val loss 1.6938 acc 0.7566 | lr 0.000707
+epoch 296/300 | train loss 0.7855 acc 0.9997 | val loss 1.6987 acc 0.7580 | lr 0.000461
+epoch 297/300 | train loss 0.7853 acc 0.9998 | val loss 1.6965 acc 0.7580 | lr 0.000268
+epoch 298/300 | train loss 0.7853 acc 0.9998 | val loss 1.6920 acc 0.7604 | lr 0.000130
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+epoch 299/300 | train loss 0.7852 acc 0.9998 | val loss 1.7031 acc 0.7538 | lr 0.000047
+epoch 300/300 | train loss 0.7851 acc 0.9998 | val loss 1.7017 acc 0.7576 | lr 0.000020
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_last.pt
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/training_curves.pt
+test loss 1.6894 | test acc 0.7652
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/classifier_head.pt
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/train_penultimate_feats_labels.pt
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/neco_params.pt
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/class_stats_train.pt

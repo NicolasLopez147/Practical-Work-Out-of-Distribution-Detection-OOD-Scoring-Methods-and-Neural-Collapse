@@ -1,0 +1,73 @@
+python: /home/ensta/ensta-nicolas.lopez/cv_job/.venv/bin/python
+Python 3.12.3
+pip 26.0.1 from /home/ensta/ensta-nicolas.lopez/cv_job/.venv/lib/python3.12/site-packages/pip (python 3.12)
+missing: []
+ok 1.17.0 2.5.1+cu121 0.20.1+cu121
+Mon Feb 16 12:47:54 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA L40S                    Off |   00000000:64:00.0 Off |                    0 |
+| N/A   29C    P8             33W /  350W |       1MiB /  46068MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+device: cuda | amp: True
+data_dir: /home/ensta/ensta-nicolas.lopez/data
+out_dir: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881
+loaded: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/resnet18_cifar100_best.pt
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/training_curves.png
+
+== extracting ID/OOD logits+features ==
+
+== OOD metrics (higher score = more ID) ==
+MSP          | AUROC 0.7486 | AUPR 0.6047 | FPR@95 0.8458
+MaxLogit     | AUROC 0.7525 | AUPR 0.6074 | FPR@95 0.8453
+Energy       | AUROC 0.7581 | AUPR 0.6111 | FPR@95 0.8359
+Mahalanobis  | AUROC 0.7707 | AUPR 0.6188 | FPR@95 0.8189
+ViM          | AUROC 0.6522 | AUPR 0.3804 | FPR@95 0.8646
+NECO         | AUROC 0.7461 | AUPR 0.5545 | FPR@95 0.8184
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/hist_msp.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/hist_maxlogit.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/hist_energy.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/hist_mahalanobis.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/hist_vim.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/hist_neco.png
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/ood_results_SVHN.pt
+
+== Neural Collapse (NC1..NC5) on train penultimate feats ==
+NC1: 0.08848003019719507
+NC2 mean/std: 0.3919419050216675 0.0570761077105999
+NC3 mean/std: 0.6953242421150208 0.043415479362010956
+NC4 mean/std: -0.010083600878715515 0.0173497311770916
+NC5 target: -0.010101010101010102
+NC5 abs dev mean: 0.022597797214984894
+NC5 fro dev: 0.029582650661468507
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/nc1_within_vs_between.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/nc_class_mean_dist_hist.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/nc_within_var.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/nc_cos_W_vs_means.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/nc2_offdiag_cos_means.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/nc4_offdiag_cos_W.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/nc5_offdiag_hist.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/nc5_gram_scaled.png
+saved fig: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/figures_part2/nc5_eigs.png
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/nc_1_to_5_penultimate_train.pt
+
+== BONUS: NC across layers (layer1..layer4) ==
+layer1 | NC1 3.2065894469624383 | NC2 0.9821622967720032 | NC3 0.0116422725841403 | NC4 -0.007556568831205368
+layer2 | NC1 3.2891637132215577 | NC2 0.9555754065513611 | NC3 0.041830070316791534 | NC4 -0.008898179046809673
+layer3 | NC1 3.1522741094765405 | NC2 0.868800163269043 | NC3 0.1537141054868698 | NC4 -0.00983380526304245
+layer4 | NC1 0.08861282226352224 | NC2 0.39147937297821045 | NC3 0.46966415643692017 | NC4 -0.010047403164207935
+saved: /home/ensta/ensta-nicolas.lopez/outputs_ood/12881/bonus_nc_across_layers.pt
