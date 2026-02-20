@@ -11,10 +11,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-
-# =========================
-# config
-# =========================
 SEED = 0
 
 DATA_DIR = os.environ.get("DATA_DIR", "./data")
@@ -36,10 +32,6 @@ RUN_NC_ACROSS_LAYERS = True
 
 OOD_NAME = "SVHN"
 
-
-# =========================
-# setup
-# =========================
 def seed_everything(seed: int):
     random.seed(seed)
     np.random.seed(seed)
@@ -58,10 +50,6 @@ os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(OUT_DIR, exist_ok=True)
 os.makedirs(FIG_DIR, exist_ok=True)
 
-
-# =========================
-# model (keep identical to checkpoint)
-# =========================
 def conv3x3(in_c, out_c, stride=1):
     return nn.Conv2d(in_c, out_c, kernel_size=3, stride=stride, padding=1, bias=False)
 
@@ -132,9 +120,6 @@ def load_checkpoint(path, model, map_location):
     return ckpt
 
 
-# =========================
-# data
-# =========================
 def build_cifar100_loaders():
     if not os.path.exists(SAVE_SPLITS):
         raise FileNotFoundError(f"missing splits file: {SAVE_SPLITS}")
@@ -148,13 +133,11 @@ def build_cifar100_loaders():
     train_full = datasets.CIFAR100(DATA_DIR, train=True, download=False, transform=tf)
     test_full = datasets.CIFAR100(DATA_DIR, train=False, download=False, transform=tf)
 
-    # case A: train/val indices defined on train set
     if "train_indices" in splits and "val_indices" in splits:
         train_ds_eval = torch.utils.data.Subset(train_full, splits["train_indices"])
         val_ds = torch.utils.data.Subset(train_full, splits["val_indices"])
         test_ds = test_full
 
-    # case B: val/test indices defined on official test set
     elif "val_indices" in splits and "test_indices" in splits:
         val_ds = torch.utils.data.Subset(test_full, splits["val_indices"])
         test_ds = torch.utils.data.Subset(test_full, splits["test_indices"])
@@ -172,8 +155,6 @@ def build_cifar100_loaders():
     test_loader = DataLoader(
         test_ds, batch_size=MINIBATCH_SIZE, shuffle=False, num_workers=0, pin_memory=PIN
     )
-
-    # val_loader is optional (only useful if you explicitly need it)
     val_loader = DataLoader(
         val_ds, batch_size=MINIBATCH_SIZE, shuffle=False, num_workers=0, pin_memory=PIN
     )
@@ -191,12 +172,8 @@ def build_ood_loader(mean, std):
 
     return DataLoader(ood_ds, batch_size=MINIBATCH_SIZE, shuffle=False, num_workers=0, pin_memory=PIN)
 
-
-# =========================
-# feature extraction
-# =========================
 @torch.no_grad()
-def extract_logits_features(model, loader):
+def extract_logits_features(model, loader, return_cpu=True):
     model.eval()
     all_logits, all_feats, all_labels = [], [], []
     feats_buf = {}
@@ -209,12 +186,19 @@ def extract_logits_features(model, loader):
     for x, y in loader:
         feats_buf.clear()
         x = x.to(device, dtype=torch.float32, non_blocking=True)
-        y = y.to(device, dtype=torch.long, non_blocking=True)
+
         with torch.cuda.amp.autocast(enabled=USE_AMP):
             logits = model(x)
+
         feats = feats_buf["feats"]
-        all_logits.append(logits.detach().cpu())
-        all_feats.append(feats.detach().cpu())
+
+        if return_cpu:
+            all_logits.append(logits.detach().cpu())
+            all_feats.append(feats.detach().cpu())
+        else:
+            all_logits.append(logits.detach())
+            all_feats.append(feats.detach())
+
         all_labels.append(y.detach().cpu())
 
     h.remove()
@@ -241,19 +225,15 @@ def extract_layer_features_stream(model, loader, layer_names=("layer1", "layer2"
 
         feats_batch = {}
         for name in layer_names:
-            z = buf[name]  # [B,C,H,W] on GPU
-            z = F.adaptive_avg_pool2d(z, 1).flatten(1)  # [B,D]
+            z = buf[name]  
+            z = F.adaptive_avg_pool2d(z, 1).flatten(1)  
             feats_batch[name] = z
 
-        yield feats_batch, y  # y on CPU
+        yield feats_batch, y  
 
     for h in handles:
         h.remove()
 
-
-# =========================
-# OOD scores + metrics
-# =========================
 def score_msp(logits):
     return F.softmax(logits, dim=1).max(dim=1).values
 
@@ -291,32 +271,48 @@ def score_mahalanobis(feats, class_means, precision):
     return -d2.min(dim=1).values
 
 
-def fit_vim(train_feats, W, r_dim=64):
+def fit_vim_vanilla(train_feats, train_logits, W, b, D=256):
     train_feats = train_feats.float()
+    train_logits = train_logits.float()
     W = W.float()
-    u = W.mean(dim=0)
 
-    X = train_feats - u
-    _, _, Vt = torch.linalg.svd(W, full_matrices=False)
-    V = Vt.T
-    P = V @ V.T
+    if b is None:
+        b = torch.zeros(W.shape[0], dtype=W.dtype, device=W.device)
+    b = b.float()
+    o = -(torch.linalg.pinv(W) @ b)  # [d]
 
-    R = X - X @ P
-    _, _, Vt_r = torch.linalg.svd(R, full_matrices=False)
-    Vr = Vt_r[:r_dim].T
-    return {"u": u, "P": P, "Vr": Vr}
+    X = train_feats - o.unsqueeze(0)
+    q = min(D, X.shape[0] - 1, X.shape[1])
+    _, _, V = torch.pca_lowrank(X, q=q, center=False)
+    U = V[:, :q].contiguous()
+
+    X_proj = X @ U @ U.t()
+    X_res = X - X_proj
+    res_norm = torch.linalg.norm(X_res, dim=1) + 1e-12
+
+    maxlogit = train_logits.max(dim=1).values
+    alpha = (maxlogit.mean() / res_norm.mean()).item()
+
+    return {"o": o, "U": U, "alpha": alpha}
 
 
-def score_vim(logits, feats, vim_params):
-    u, P, Vr = vim_params["u"], vim_params["P"], vim_params["Vr"]
+def score_vim_vanilla(logits, feats, vim_params):
+    o = vim_params["o"].float()
+    U = vim_params["U"].float()
+    alpha = float(vim_params["alpha"])
+
     feats = feats.float()
-    X = feats - u
-    R = X - X @ P
-    z = R @ Vr
-    residual_norm = torch.norm(z, dim=1)
-    maxlogit = logits.max(dim=1).values
-    return maxlogit - residual_norm
+    logits = logits.float()
 
+    X = feats - o.unsqueeze(0)
+    X_res = X - (X @ U @ U.t())
+    res_norm = torch.linalg.norm(X_res, dim=1)
+
+    v = alpha * res_norm
+    energy = torch.logsumexp(logits, dim=1)
+
+    oodness = v - energy
+    return -oodness
 
 def score_neco(logits, feats, neco_params, eps=1e-12):
     mu = neco_params["mu"]
@@ -382,9 +378,6 @@ def save_hist(id_scores, ood_scores, title, fname):
     print("saved fig:", path)
 
 
-# =========================
-# Neural Collapse (penultimate + helpers)
-# =========================
 @torch.no_grad()
 def compute_class_stats(feats, labels, num_classes):
     feats = feats.float()
@@ -422,7 +415,8 @@ def nc1_metric(within_var, means):
 
 
 def nc2_metric(means):
-    G = gram_cosine_matrix(means)
+    M = means - means.mean(dim=0, keepdim=True)
+    G = gram_cosine_matrix(M)
     C = G.size(0)
     I = torch.eye(C, dtype=torch.bool, device=G.device)
     off = G[~I]
@@ -430,8 +424,9 @@ def nc2_metric(means):
 
 
 def nc3_metric(W, means):
+    M = means - means.mean(dim=0, keepdim=True)
     Wn = W / (W.norm(dim=1, keepdim=True) + 1e-12)
-    Mn = means / (means.norm(dim=1, keepdim=True) + 1e-12)
+    Mn = M / (M.norm(dim=1, keepdim=True) + 1e-12)
     cos = (Wn * Mn).sum(dim=1)
     return cos.mean().item(), cos.std().item(), cos.cpu().numpy()
 
@@ -470,7 +465,6 @@ def nc5_metric(means):
 
 
 def save_nc_plots(offdiag_dists, within_var, between_var, nc3_per_class, nc5, means, W):
-    # NC1 parts
     ratio = within_var / (between_var + 1e-12)
     plt.figure(figsize=(4, 4))
     plt.bar([0, 1], [within_var, between_var])
@@ -481,7 +475,6 @@ def save_nc_plots(offdiag_dists, within_var, between_var, nc3_per_class, nc5, me
     plt.savefig(p, dpi=200)
     plt.close()
 
-    # distances between class means
     plt.figure(figsize=(6, 4))
     plt.hist(offdiag_dists, bins=60)
     plt.title("class mean distances (off-diagonal)")
@@ -492,7 +485,6 @@ def save_nc_plots(offdiag_dists, within_var, between_var, nc3_per_class, nc5, me
     plt.savefig(p, dpi=200)
     plt.close()
 
-    # within var alone
     plt.figure(figsize=(4, 4))
     plt.bar([0], [within_var])
     plt.title("within-class variance (train, penultimate)")
@@ -502,7 +494,6 @@ def save_nc_plots(offdiag_dists, within_var, between_var, nc3_per_class, nc5, me
     plt.savefig(p, dpi=200)
     plt.close()
 
-    # NC3 per class
     plt.figure(figsize=(6, 4))
     plt.hist(nc3_per_class, bins=50)
     plt.title("cosine: classifier weights vs class means (per class)")
@@ -513,8 +504,8 @@ def save_nc_plots(offdiag_dists, within_var, between_var, nc3_per_class, nc5, me
     plt.savefig(p, dpi=200)
     plt.close()
 
-    # NC2 offdiag means
-    Gm = gram_cosine_matrix(means).detach().cpu().numpy()
+    M = means - means.mean(dim=0, keepdim=True)
+    Gm = gram_cosine_matrix(M).detach().cpu().numpy()
     C = Gm.shape[0]
     target = -1.0 / (C - 1)
     off_m = Gm[~np.eye(C, dtype=bool)]
@@ -529,7 +520,6 @@ def save_nc_plots(offdiag_dists, within_var, between_var, nc3_per_class, nc5, me
     plt.savefig(p, dpi=200)
     plt.close()
 
-    # NC4 offdiag weights
     Gw = gram_cosine_matrix(W).detach().cpu().numpy()
     off_w = Gw[~np.eye(C, dtype=bool)]
     plt.figure(figsize=(6, 4))
@@ -543,7 +533,6 @@ def save_nc_plots(offdiag_dists, within_var, between_var, nc3_per_class, nc5, me
     plt.savefig(p, dpi=200)
     plt.close()
 
-    # NC5 offdiag hist + scaled gram + eigs
     G = nc5["gram"]
     off_vals = G[~np.eye(G.shape[0], dtype=bool)]
     target5 = nc5["target"]
@@ -583,10 +572,6 @@ def save_nc_plots(offdiag_dists, within_var, between_var, nc3_per_class, nc5, me
 
     print("saved NC figs in:", FIG_DIR)
 
-
-# =========================
-# BONUS: NC across layers (online)
-# =========================
 @torch.no_grad()
 def fit_linear_probe_ls_online(stream, num_classes, ridge=1e-3):
     XtX = None
@@ -613,9 +598,9 @@ def fit_linear_probe_ls_online(stream, num_classes, ridge=1e-3):
     Dt = XtX.size(0)
     XtX = XtX + ridge * torch.eye(Dt, device=device, dtype=XtX.dtype)
 
-    Wb = torch.linalg.solve(XtX, XtY)   # [(D+1), C]
-    W = Wb[:-1, :].T.contiguous()       # [C, D]
-    b = Wb[-1, :].contiguous()          # [C]
+    Wb = torch.linalg.solve(XtX, XtY)  
+    W = Wb[:-1, :].T.contiguous()       
+    b = Wb[-1, :].contiguous()          
     return W, b
 
 
@@ -734,10 +719,6 @@ def save_nc_across_layers_plots(layer_results):
     plt.savefig(os.path.join(FIG_DIR, "bonus_nc4_across_layers.png"), dpi=200)
     plt.close()
 
-
-# =========================
-# main
-# =========================
 def maybe_plot_training_curves():
     if not os.path.exists(SAVE_CURVES):
         return
@@ -786,7 +767,6 @@ def main():
 
     maybe_plot_training_curves()
 
-    # ---- OOD
     if RUN_OOD_SCORES:
         print("\n== extracting ID/OOD logits+features ==")
         id_logits, id_feats, _ = extract_logits_features(model, test_loader)
@@ -800,10 +780,17 @@ def main():
         id_ma = score_mahalanobis(id_feats, class_means, precision).numpy()
         ood_ma = score_mahalanobis(ood_feats, class_means, precision).numpy()
 
-        W_fc = model.fc.weight.detach().cpu()
-        vim_params = fit_vim(tr_feats, W_fc, r_dim=64)
-        id_vm = score_vim(id_logits, id_feats, vim_params).numpy()
-        ood_vm = score_vim(ood_logits, ood_feats, vim_params).numpy()
+        tr_logits_fit, tr_feats_fit, _ = extract_logits_features(model, train_loader_eval, return_cpu=False)
+
+        W_fc = model.fc.weight.detach()        # stays on GPU
+        b_fc = model.fc.bias.detach() if model.fc.bias is not None else None
+
+        vim_params = fit_vim_vanilla(tr_feats_fit, tr_logits_fit, W_fc, b_fc, D=256)
+        id_logits_g, id_feats_g, _ = extract_logits_features(model, test_loader, return_cpu=False)
+        ood_logits_g, ood_feats_g, _ = extract_logits_features(model, ood_loader, return_cpu=False)
+
+        id_vm  = score_vim_vanilla(id_logits_g,  id_feats_g,  vim_params).detach().cpu().numpy()
+        ood_vm = score_vim_vanilla(ood_logits_g, ood_feats_g, vim_params).detach().cpu().numpy()
 
         id_ne = score_neco(id_logits, id_feats, neco_params).numpy()
         ood_ne = score_neco(ood_logits, ood_feats, neco_params).numpy()
@@ -829,7 +816,6 @@ def main():
         torch.save({"ood_name": OOD_NAME, "results": res}, out_path)
         print("saved:", out_path)
 
-    # ---- NC1..NC5 (penultimate)
     if RUN_NC_1_TO_5:
         print("\n== Neural Collapse (NC1..NC5) on train penultimate feats ==")
         means, within_var, counts = compute_class_stats(tr_feats, tr_y, NUM_CLASSES)
@@ -865,14 +851,12 @@ def main():
             "nc4_offdiag_cos_mean_W": nc4_mean,
             "nc4_offdiag_cos_std_W": nc4_std,
             "class_mean_dist_offdiag": offdiag_dists,
-            "class_counts": counts.numpy(),
+            "class_counts": counts.detach().cpu().numpy(),
             "nc5": nc5,
         }
         out_path = os.path.join(OUT_DIR, "nc_1_to_5_penultimate_train.pt")
         torch.save(out_nc, out_path)
         print("saved:", out_path)
-
-    # ---- BONUS: NC across layers
     if RUN_NC_ACROSS_LAYERS:
         print("\n== BONUS: NC across layers (layer1..layer4) ==")
         layer_results = {}
